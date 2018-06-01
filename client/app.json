@@ -1,0 +1,44 @@
+{
+  "pages":[
+    "pages/home/home",
+    "pages/detail/detail",
+    "pages/order/order",
+    "pages/trolley/trolley",
+    "pages/user/user"
+  ],
+  "window":{
+    "backgroundColor":"#F6F6F6",
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#ececee",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "iconPath": "/images/home.png",
+        "selectedIconPath": "/images/home-sel.png",
+        "text": "商城"
+      },
+      {
+        "pagePath": "pages/order/order",
+        "iconPath": "/images/order.png",
+        "selectedIconPath": "/images/order-sel.png",
+        "text": "订单"
+      },
+      {
+        "pagePath": "pages/trolley/trolley",
+        "iconPath": "/images/trolley.png",
+        "selectedIconPath": "/images/trolley-sel.png",
+        "text": "购物车"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "iconPath": "/images/home.png",
+        "selectedIconPath": "/images/home-sel.png",
+        "text": "个人中心"
+      }
+    ]
+  }
+}
