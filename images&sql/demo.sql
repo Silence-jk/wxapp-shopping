@@ -63,7 +63,7 @@ CREATE TABLE `order_user` (
   `user` varchar(255) NOT NULL,
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
+-- 订单时间自动更新  DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 -- --------------------------------------------------------
 
 --

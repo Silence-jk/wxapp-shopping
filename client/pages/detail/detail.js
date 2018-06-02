@@ -95,5 +95,49 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+
+  onTapBuy() {
+    wx.showLoading({
+      title: '商品购买中.....',
+    })
+    console.log('project: ' + JSON.stringify(this.data.product))
+
+    let product = Object.assign({
+      count: 1
+    }, this.data.product)
+
+    qcloud.request({
+      url: config.service.addOrder,
+      login: true,
+      method: 'POST',
+      data: {
+        list: [product]
+      },
+      success: result => {
+        console.log('result: ' + JSON.stringify(result))
+        wx.hideLoading()
+        let data = result.data
+        console.log('data: ' + JSON.stringify(data))
+        if (!data.code) {
+          wx.showToast({
+            title: '商品购买成功',
+          })
+        } else {
+          wx.showToast({
+            icon: 'none',
+            title: '商品购买失败',
+          })
+        }
+      },
+      fail: () => {
+        wx.hideLoading()
+
+        wx.showToast({
+          icon: 'none',
+          title: '商品购买失败'
+        })
+      }
+    })
   }
 })

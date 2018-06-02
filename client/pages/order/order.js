@@ -1,4 +1,6 @@
 // pages/order/order.js
+const qcloud = require('../../vendor/wafer2-client-sdk/index')
+const config = require('../../config')
 const app = getApp()
 
 Page({
@@ -7,13 +9,48 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo: null
+    userInfo: null,
+    orderList: []   //订单列表
   },
+
   onTapLogin() {
     app.login({
-      success: ({ userInfo }) => {
+      success: ({userInfo}) => {
         this.setData({
           userInfo
+        })
+      }
+    })
+    this.getOrder()
+  },
+  getOrder() {
+    wx.showLoading({
+      title: '加载订单中...',
+    })
+    
+    qcloud.request({
+      url: config.service.orderList,
+      login: true,
+      success: result => {
+        wx.hideLoading()
+
+        let data = result.data
+        console.log('data: ' + data)
+        if (!data.code) {
+          this.setData({
+            orderList: data.data
+          })
+        } else {
+          wx.showToast({
+            icon: 'none',
+            title: '刷新订单数据失败',
+          })
+        }
+      },
+      fail: () => {
+        wx.hideLoading()
+        wx.showToast({
+          title: '订单数据获取失败！',
         })
       }
     })
@@ -22,7 +59,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    this.getOrder()
   },
 
   /**
@@ -43,6 +80,7 @@ Page({
         })
       }
     })
+    this.getOrder()
   },
 
   /**
