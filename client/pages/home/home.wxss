@@ -1,8 +1,4 @@
 /* pages/home/home.wxss */
-.bg {
-  position: absolute;
-  top: -340rpx;
-}
 .hot-card {
   position: relative;
   margin: 32rpx 52rpx 0;

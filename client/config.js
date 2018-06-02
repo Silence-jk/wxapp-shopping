@@ -27,7 +27,10 @@ var config = {
         productList: `${host}/weapp/product`,
 
         //商品详情页
-        productDetail: `${host}/weapp/product/`
+        productDetail: `${host}/weapp/product/`,
+
+        //拉去用户信息
+        user: `${host}/weapp/user`,
     }
 };
 

@@ -1,1 +1,19 @@
 /* pages/trolley/trolley.wxss */
+.trolley-empty {
+  display: flex;
+  flex-direction: column;
+  height: 431rpx;
+  justify-content: center;
+  align-items: center;
+  border-radius: 13rpx;
+  background: #fff;
+  margin: 37rpx 27rpx;
+  box-shadow: 0 2rpx 13rpx 5rpx rgba(0, 0, 0, 0.02);
+}
+
+.empty-image {
+  margin-bottom: 29rpx;
+  width: 90rpx;
+  height: 90rpx;
+  opacity: 0.4;
+}
