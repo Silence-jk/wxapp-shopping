@@ -36,7 +36,22 @@ var config = {
         addOrder: `${host}/weapp/order`,
 
         //获取已购订单列表
-        orderList: `${host}/weapp/order`
+        orderList: `${host}/weapp/order`,
+
+        //添加进购物车
+        addTrolley: `${host}/weapp/trolley`,
+
+        //获取购物车列表
+        trolleyList: `${host}/weapp/trolley`,
+
+        //更新购物车列表
+        updateTrolley: `${host}/weapp/trolley`,
+
+        //添加评论
+        addComment: `${host}/weapp/comment`,
+
+        //获取评论列表
+        commentList: `${host}/weapp/comment`
     }
 };
 

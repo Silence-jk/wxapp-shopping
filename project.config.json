@@ -30,6 +30,18 @@
 					"name": "detail",
 					"pathName": "pages/detail/detail",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "trolley",
+					"pathName": "pages/trolley/trolley",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "add-comment",
+					"pathName": "pages/add-comment/add-comment",
+					"query": ""
 				}
 			]
 		}

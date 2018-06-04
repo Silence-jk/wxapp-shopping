@@ -9,8 +9,18 @@ Page({
    */
   data: {
     product: {},
+    /**
+     * {"id":3,"image":"https://product-1252093296.cos.ap-beijing.myqcloud.com/product3.jpg","name":"红纹铁质装订机","price":28,"source":"国内·福建"}
+     */
   },
-
+  onTapShowComment() {
+    let product = this.data.product
+    if(product.commentCount) {
+      wx.navigateTo({
+        url: `/pages/comment/comment?id=${product.id}&price=${product.price}&name=${product.name}&image=${product.image}`,
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -25,7 +35,7 @@ Page({
     qcloud.request({
       url: config.service.productDetail + id,
       success: result => {
-        // console.log(result.data)
+        // console.log(JSON.stringify(result.data))
         wx.hideLoading()
 
         let data = result.data
@@ -45,6 +55,43 @@ Page({
         setTimeout(() => {
           wx.navigateBack()
         }, 2000)
+      }
+    })
+  },
+
+  addToTrolley() {
+    wx.showLoading({
+      title: '正在添加到购物车',
+    })
+
+    qcloud.request({
+      url: config.service.addTrolley,
+      login: true,
+      method: 'PUT',
+      data: {
+        id: this.data.product.id
+      },
+      success: result => {
+        wx.hideLoading()
+
+        let data = result.data
+        if (!data.code) {
+          wx.showToast({
+            title: '已添加到购物车',
+          })
+        } else {
+          wx.showToast({
+            icon: 'none',
+            title: '添加失败',
+          })
+        }
+      },
+      fail: () => {
+        wx.hideLoading()
+        wx.showToast({
+          icon: 'none',
+          title: '添加失败！',
+        })
       }
     })
   },
@@ -112,7 +159,8 @@ Page({
       login: true,
       method: 'POST',
       data: {
-        list: [product]
+        list: [product],
+        isInstantBuy: true
       },
       success: result => {
         console.log('result: ' + JSON.stringify(result))
